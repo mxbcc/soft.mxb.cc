@@ -59,7 +59,7 @@ export const MxbDetail = ({ id }) => {
     }
 
     const download = (id: string) => {
-        window.open(`${serverUrl}/apis/packages/${id}`);
+        window.open(`${serverUrl}/apis/resources/${id}/packages/${id}`);
     }
 
     return <div className="relative flex flex-col flex-1 h-0">
