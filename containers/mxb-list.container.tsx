@@ -26,7 +26,9 @@ export const MxbList = ({ url, query, list, selected, onSelect, loading }) => {
                 推荐
             </TabItem>
         </Tab>
-        {loading ? <Loading/> : <div className="flex-1 h-0 overflow-auto bg-white">
+        {loading ? <div className="flex-1 flex h-0 overflow-auto bg-white">
+            <Loading/>
+        </div> : <div className="flex-1 h-0 overflow-auto bg-white">
             {list.map(item => <Card
                 onClick={() => onSelect(item.id)}
                 active={selected === item.id}

@@ -102,7 +102,7 @@ export const MxbDetail = ({ id }) => {
                     {isLike ? '已' : ''}喜欢({likes})
                 </Button>
                 <Divider/>
-                <Button icon="ri-download-2-line" onClick={() => setVisible(!isVisible)}>
+                <Button disable={!resource.packages} icon="ri-download-2-line" onClick={() => setVisible(!isVisible)}>
                     下载
                 </Button>
             </footer>
