@@ -5,30 +5,30 @@ metadata:
     ingress.kubernetes.io/force-ssl-redirect: "true"
     ingress.kubernetes.io/ssl-redirect: "true"
     traefik.ingress.kubernetes.io/router.entrypoints: web,websecure
-    traefik.ingress.kubernetes.io/router.middlewares: default-mxb-web-redirectschema@kubernetescrd
-  name: mxb-web-https-ingress
+    traefik.ingress.kubernetes.io/router.middlewares: default-soft-mxb-cc-redirectschema@kubernetescrd
+  name: soft-mxb-cc-https-ingress
   namespace: default
 spec:
   rules:
-    - host: mxb.cc
+    - host: soft.mxb.cc
       http:
         paths:
           - backend:
               service:
-                name: mxb-web-service
+                name: soft-mxb-cc-service
                 port:
                   number: 3000
             path: /
             pathType: ImplementationSpecific
   tls:
-    - secretName: mxb-web-certs
+    - secretName: soft-mxb-cc-certs
 
 ---
 
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: mxb-web-redirectschema
+  name: soft-mxb-cc-redirectschema
   namespace: default
 spec:
   redirectScheme:

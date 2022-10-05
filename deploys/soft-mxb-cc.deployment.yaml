@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: soft-mxb-cc
+  name: soft-mxb-cc
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: soft-mxb-cc
+  template:
+    metadata:
+      labels:
+        app: soft-mxb-cc
+    spec:
+      containers:
+        - env:
+            - name: NODE_ENV
+              value: production
+          image: mxbcc/soft.mxb.cc:v0.0.1
+          imagePullPolicy: IfNotPresent
+          name: soft-mxb-cc
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: { }

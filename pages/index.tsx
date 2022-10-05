@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { MxbHomepage } from "../containers/mxb-homepage.container";
+import { CategoryType } from "../enums/category-type.enum";
 
 export default class Page extends React.Component<any, any> {
     static async getInitialProps(context) {
@@ -14,7 +15,7 @@ export default class Page extends React.Component<any, any> {
             categoryId={categoryId}
             platform={platform}
             language={language}
-            categoryType={categoryType}
+            categoryType={categoryType ?? CategoryType.SOFT}
         />;
     }
 }
