@@ -3,10 +3,11 @@ import { Card } from "../components/card.component";
 import { Sorts } from "../enums/sorts.enum";
 import { buildUrl } from "../helpers/url.helper";
 import { Loading } from "../components/loading.component";
+import { CategoryType } from "../enums/category-type.enum";
 
-export const MxbList = ({ url, query, list, selected, onSelect, loading }) => {
+export const MxbList = ({ url, query, list, selected, onSelect, loading, type }) => {
     return <div className="flex flex-col flex-1 h-0">
-        <h1 className="text-3xl p-6 bg-white">全部软件</h1>
+        <h1 className="text-3xl p-6 bg-white">全部{type === CategoryType.SOFT ? '软件' : ''}</h1>
         <Tab>
             <TabItem
                 active={query.sort === Sorts.LATEST || !query.sort}

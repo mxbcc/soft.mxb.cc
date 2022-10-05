@@ -45,6 +45,7 @@ export const MxbHomepage = ({ type, categoryId, categoryType, platform, language
                 categoryId={categoryId}
             />}
             list={<MxbList
+                type={categoryType}
                 loading={loading}
                 selected={selected}
                 onSelect={(id) => select(id)}
