@@ -21,6 +21,11 @@ const LANGUAGE_MAPPING = {
     [ResourceLanguage.OTHER]: '其他',
 }
 
+const PKG_TYPE_MAPPING = {
+    'qiniu': '七牛云',
+    'baidu': '百度云'
+}
+
 const TYPE_MAPPING = {
     [ResourceType.NORMAL]: '官方版',
     [ResourceType.CRACK]: '破解版',
@@ -102,7 +107,10 @@ export const MxbDetail = ({ id }) => {
                     {isLike ? '已' : ''}喜欢({likes})
                 </Button>
                 <Divider/>
-                <Button disable={!resource.packages} icon="ri-download-2-line" onClick={() => setVisible(!isVisible)}>
+                <Button
+                    disable={!resource.packages?.length}
+                    icon="ri-download-2-line"
+                    onClick={() => setVisible(!isVisible)}>
                     下载
                 </Button>
             </footer>
@@ -112,11 +120,16 @@ export const MxbDetail = ({ id }) => {
                         key={item.id}
                         onClick={() => download(item.id)}
                         className="hover:bg-blue-50 hover:cursor-pointer">
-                        <td className="px-10 py-8 text-2xl">{item.version}</td>
-                        <td className="px-10 py-8 text-2xl">&gt;={item.system}</td>
+                        {resource.categoryType === CategoryType.SOFT ? <>
+                            <td className="px-10 py-8 text-2xl">{item.version}</td>
+                            <td className="px-10 py-8 text-2xl">&gt;={item.system}</td>
+                        </> : null}
                         <td className="px-10 py-8 text-2xl">{LANGUAGE_MAPPING[item.language]}</td>
                         <td className="px-10 py-8 text-2xl">
                             {dayjs(item.createdAt || item.updatedAt).format('YYYY-MM-DD')}
+                        </td>
+                        <td className="px-10 py-8 text-2xl">
+                            {PKG_TYPE_MAPPING[item.type]}
                         </td>
                         <td className="px-10 py-8 text-3xl">
                             <i className="ri-download-2-line"/>

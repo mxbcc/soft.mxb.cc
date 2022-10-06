@@ -23,7 +23,7 @@ export const Card = ({ icon, title, desc, downloads, comments, date, version, ac
         ">
         <div className={`absolute left-0 top-0 bottom-0 bg-blue-500 ${active ? 'w-2' : ''}`}/>
         <div className="mr-6 flex justify-center items-center">
-            <img className="h-20 w-20 rounded" src={icon ?? defaultImg}/>
+            <img className="w-20 rounded" src={icon ?? defaultImg}/>
         </div>
         <div className="flex-1 relative">
             <h3 className="text-2xl mb-2">{title}</h3>
